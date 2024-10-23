@@ -1,6 +1,5 @@
 import httpStatus from "http-status";
 import config from "../../config";
-
 import { createToken } from "../utils/verifyJWT";
 import { TUser } from "./auth.interface";
 import { User } from "./auth.model";

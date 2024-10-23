@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { AuthRoutes } from "../modules/auth/auth.route";
 // import { CarRoutes } from "../modules/car/car.router";
 // import { BookRouter } from "../modules/book/book.route";
 // import { AuthRoutes } from "../modules/auth/auth.route";
@@ -8,20 +9,20 @@ const router = Router();
 const moduleRoutes = [
   {
     path: "/auth",
-    route: "AuthRoutes",
+    route: AuthRoutes,
   },
-  {
-    path: "/user",
-    route: "UserRoutes",
-  },
-  {
-    path: "/cars",
-    route: "CarRoutes",
-  },
+  // {
+  //   path: "/user",
+  //   route: "UserRoutes",
+  // },
+  // {
+  //   path: "/cars",
+  //   route: "CarRoutes",
+  // },
 ];
 
 moduleRoutes.forEach((route) => {
-  // router.use(route.path, route.route);
+  router.use(route.path, route.route);
 });
 
 export default router;
