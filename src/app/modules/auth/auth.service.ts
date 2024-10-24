@@ -22,6 +22,7 @@ const signIn = async (payload: TUser): Promise<any> => {
     _id: user._id,
     name: user.name,
     email: user.email,
+    role: "admin",
   };
 
   const accessToken = createToken(
@@ -41,5 +42,17 @@ const signIn = async (payload: TUser): Promise<any> => {
     refreshToken,
   };
 };
+const getSingleUserFromDB = async (email: string) => {
+  const result = await User.findOne({ email })
+    .populate({
+      path: "following",
+      select: "name email profilePicture",
+    })
+    .populate({
+      path: "followers",
+      select: "name email profilePicture",
+    });
+  return result;
+};
 
-export const authService = { signIn };
+export const authService = { signIn, getSingleUserFromDB };

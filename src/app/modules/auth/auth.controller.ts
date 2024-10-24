@@ -22,7 +22,25 @@ const signIn = catchAsync(async (req, res) => {
     },
   });
 });
+const getUserProfile = catchAsync(async (req, res) => {
+  const result = await authService.getSingleUserFromDB(req.params.email);
+  if (!result || (Array.isArray(result) && result.length === 0)) {
+    return sendResponse(res, {
+      statusCode: httpStatus.NOT_FOUND,
+      success: false,
+      message: "No user found",
+      data: [],
+    });
+  }
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "A User Profile retrieved successfully",
+    data: result,
+  });
+});
 
 export const authController = {
   signIn,
+  getUserProfile,
 };
