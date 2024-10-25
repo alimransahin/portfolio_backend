@@ -1,38 +1,36 @@
-import { TProject } from "./project.interface";
-import { Project } from "./project.model";
+import { TExperience } from "./experience.interface";
+import { Experience } from "./experience.model";
 
-const createProjectIntoDB = async (payload: TProject) => {
-  const newProject = await Project.create(payload);
-  return newProject;
+const createExperienceIntoDB = async (payload: TExperience) => {
+  const newExperience = await Experience.create(payload);
+  return newExperience;
 };
-const getAllProjectFromDB = async () => {
-  const result = await Project.find();
+const getAllExperienceFromDB = async () => {
+  const result = await Experience.find();
   return result;
 };
-// const getSingleCarFromDB = async (id: string) => {
-//   const result = await Car.findOne({ _id: id });
-//   return result;
-// };
-const updateProjectIntoDB = async (id: string, payload: Partial<TProject>) => {
-  const result = await Project.findOneAndUpdate({ _id: id }, payload, {
+const updateExperienceIntoDB = async (
+  id: string,
+  payload: Partial<TExperience>
+) => {
+  const result = await Experience.findOneAndUpdate({ _id: id }, payload, {
     new: true,
   });
   return result;
 };
-const deleteProjectFromDB = async (id: string) => {
+const deleteExperienceFromDB = async (id: string) => {
   const deleteInfo = {
     isDeleted: true,
   };
-  const result = await Project.findOneAndUpdate({ _id: id }, deleteInfo, {
+  const result = await Experience.findOneAndUpdate({ _id: id }, deleteInfo, {
     new: true,
   });
   return result;
 };
 
-export const projectService = {
-  createProjectIntoDB,
-  getAllProjectFromDB,
-  // getSingleCarFromDB,
-  updateProjectIntoDB,
-  deleteProjectFromDB,
+export const ExperienceService = {
+  createExperienceIntoDB,
+  getAllExperienceFromDB,
+  updateExperienceIntoDB,
+  deleteExperienceFromDB,
 };

@@ -1,11 +1,11 @@
 import express from "express";
-import { projectController } from "./project.controller";
+import { skillController } from "./skills.controller";
 
 const router = express.Router();
 
-router.post("/", projectController.createProject);
-router.get("/", projectController.getAllProject);
-router.put("/:id", projectController.updateProject);
-router.delete("/:id", projectController.deleteProject);
+router.post("/", skillController.createSkill);
+router.get("/", skillController.getAllSkill);
+router.put("/:id", skillController.updateSkill);
+router.delete("/:id", skillController.deleteSkill);
 
-export const ProjectRoutes = router;
+export const SkillRoutes = router;

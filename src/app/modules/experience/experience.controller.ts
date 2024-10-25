@@ -1,53 +1,37 @@
 import httpStatus from "http-status";
 import catchAsync from "../utils/catchAsync";
 import sendResponse from "../utils/sendResponse";
-import { projectService } from "./project.service";
+import { ExperienceService } from "./experience.service";
 
-const createProject = catchAsync(async (req, res) => {
-  const result = await projectService.createProjectIntoDB(req.body);
+const createExperience = catchAsync(async (req, res) => {
+  const result = await ExperienceService.createExperienceIntoDB(req.body);
   sendResponse(res, {
     statusCode: httpStatus.CREATED,
     success: true,
-    message: "Project created successfully",
+    message: "Experience created successfully",
     data: result,
   });
 });
-const getAllProject = catchAsync(async (req, res) => {
-  const result = await projectService.getAllProjectFromDB();
+const getAllExperience = catchAsync(async (req, res) => {
+  const result = await ExperienceService.getAllExperienceFromDB();
   if (!result || (Array.isArray(result) && result.length === 0)) {
     return sendResponse(res, {
       statusCode: httpStatus.NOT_FOUND,
       success: false,
-      message: "No Project found",
+      message: "No Experience found",
       data: [],
     });
   }
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Projects retrieved successfully",
+    message: "Experiences retrieved successfully",
     data: result,
   });
 });
-// const getSingleCar = catchAsync(async (req, res) => {
-//   const result = await projectService.getSingleCarFromDB(req.params.id);
-//   if (!result || (Array.isArray(result) && result.length === 0)) {
-//     return sendResponse(res, {
-//       statusCode: httpStatus.NOT_FOUND,
-//       success: false,
-//       message: "No data found",
-//       data: [],
-//     });
-//   }
-//   sendResponse(res, {
-//     statusCode: httpStatus.OK,
-//     success: true,
-//     message: "A Car retrieved successfully",
-//     data: result,
-//   });
-// });
-const updateProject = catchAsync(async (req, res) => {
-  const result = await projectService.updateProjectIntoDB(
+
+const updateExperience = catchAsync(async (req, res) => {
+  const result = await ExperienceService.updateExperienceIntoDB(
     req.params.id,
     req.body
   );
@@ -56,7 +40,7 @@ const updateProject = catchAsync(async (req, res) => {
     return sendResponse(res, {
       statusCode: httpStatus.NOT_FOUND,
       success: false,
-      message: "No Project found",
+      message: "No Experience found",
       data: [],
     });
   }
@@ -64,32 +48,32 @@ const updateProject = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Project updated succeskkkkksfully",
+    message: "Experience updated successfully",
     data: result,
   });
 });
-const deleteProject = catchAsync(async (req, res) => {
-  const result = await projectService.deleteProjectFromDB(req.params.id);
+const deleteExperience = catchAsync(async (req, res) => {
+  const result = await ExperienceService.deleteExperienceFromDB(req.params.id);
 
   if (!result || (Array.isArray(result) && result.length === 0)) {
     return sendResponse(res, {
       statusCode: httpStatus.NOT_FOUND,
       success: false,
-      message: "No Project found",
+      message: "No Experience found",
       data: [],
     });
   }
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Project Deleted successfully",
+    message: "Experience Deleted successfully",
     data: result,
   });
 });
 
-export const projectController = {
-  createProject,
-  getAllProject,
-  updateProject,
-  deleteProject,
+export const experienceController = {
+  createExperience,
+  getAllExperience,
+  updateExperience,
+  deleteExperience,
 };

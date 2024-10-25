@@ -1,11 +1,11 @@
 import express from "express";
-import { projectController } from "./project.controller";
+import { experienceController } from "./experience.controller";
 
 const router = express.Router();
 
-router.post("/", projectController.createProject);
-router.get("/", projectController.getAllProject);
-router.put("/:id", projectController.updateProject);
-router.delete("/:id", projectController.deleteProject);
+router.post("/", experienceController.createExperience);
+router.get("/", experienceController.getAllExperience);
+router.put("/:id", experienceController.updateExperience);
+router.delete("/:id", experienceController.deleteExperience);
 
-export const ProjectRoutes = router;
+export const ExperienceRoutes = router;

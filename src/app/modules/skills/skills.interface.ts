@@ -1,12 +1,6 @@
-export type TProject = {
+export type TSkill = {
   name: string;
-  live: string;
-  client: string;
-  server: string;
-  technology: string[];
-  feature: string[];
-  mainImage: string;
-  images: string[];
-  description: string;
+  image: string;
+  category: string;
   isDeleted: boolean;
 };

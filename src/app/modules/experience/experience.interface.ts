@@ -1,12 +1,8 @@
-export type TProject = {
-  name: string;
-  live: string;
-  client: string;
-  server: string;
-  technology: string[];
-  feature: string[];
-  mainImage: string;
-  images: string[];
+export type TExperience = {
+  title: string;
+  role: string;
+  startTime: string;
+  endTime: string;
   description: string;
   isDeleted: boolean;
 };
